@@ -26,7 +26,7 @@ h1 {
     margin-bottom: 20px;
 }
 
-#status-cantina, #resultado-venda {
+.secao {
     background-color: #ecf0f1;
     padding: 15px;
     border-radius: 6px;
@@ -34,8 +34,20 @@ h1 {
     text-align: left;
 }
 
-.botoes {
+.secao h2 {
+    color: #34495e;
+    margin-top: 0;
+    border-bottom: 1px dashed #bdc3c7;
+    padding-bottom: 5px;
+}
+
+#resultado-venda {
+    background-color: #d1f2eb;
+    padding: 15px;
+    border-radius: 6px;
     margin-bottom: 20px;
+    text-align: left;
+    border: 1px solid #a2d9ce;
 }
 
 button {
@@ -47,6 +59,7 @@ button {
     cursor: pointer;
     font-size: 16px;
     transition: background-color 0.3s;
+    margin-top: 10px;
 }
 
 button:hover {
@@ -59,6 +72,7 @@ button:hover {
     text-align: left;
     padding: 15px;
     border-radius: 6px;
+    margin-top: 20px;
 }
 
 .terminal h2 {

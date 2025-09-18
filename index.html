@@ -3,24 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cantina da Escola</title>
+    <title>Cantina da Escola - V2</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
         <h1>Cantina da Escola</h1>
-        <div id="status-cantina">
-            <p><strong>Nome da Cantina:</strong> <span id="nome-cantina"></span></p>
-            <p><strong>Salgados Disponíveis:</strong> <span id="salgados-disponiveis"></span></p>
-            <p><strong>Preço por Salgado:</strong> <span id="preco-salgado"></span></p>
+
+        <div class="secao">
+            <h2>Salgados</h2>
+            <div id="status-salgados">
+                <p><strong>Tipos:</strong> Risole, Kibe</p>
+                <p><strong>Preço:</strong> <span id="preco-salgado"></span></p>
+                <p><strong>Disponíveis:</strong> <span id="salgados-disponiveis"></span></p>
+            </div>
+            <button id="vender-salgado-btn">Vender 5 Salgados</button>
         </div>
-        <div class="botoes">
-            <button id="vender-btn">Vender 5 Salgados</button>
+
+        <div class="secao">
+            <h2>Bebidas</h2>
+            <div id="status-bebidas">
+                <p><strong>Tipos:</strong> Água, Coca-cola</p>
+                <p><strong>Preço:</strong> <span id="preco-bebida"></span></p>
+                <p><strong>Disponíveis:</strong> <span id="bebidas-disponiveis"></span></p>
+            </div>
+            <button id="vender-bebida-btn">Vender 3 Bebidas</button>
         </div>
+
         <div id="resultado-venda">
+            <h3>Última Venda</h3>
             <p><strong>Salgados Restantes:</strong> <span id="salgados-restantes"></span></p>
-            <p><strong>Total Arrecadado (na venda):</strong> <span id="total-arrecadado"></span></p>
+            <p><strong>Bebidas Restantes:</strong> <span id="bebidas-restantes"></span></p>
+            <p><strong>Total Arrecadado:</strong> <span id="total-arrecadado"></span></p>
         </div>
+
         <div class="terminal">
             <h2>Console (Saídas do JavaScript)</h2>
             <pre id="console-output"></pre>

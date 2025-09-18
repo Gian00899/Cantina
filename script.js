@@ -1,85 +1,90 @@
-// Criando o estilo via JS
-const style = document.createElement('style');
-style.textContent = `
-  body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #fff9e6;
-    color: #444;
-    margin: 20px;
-    padding: 0;
-  }
-  h1 {
-    color: #b85400;
-  }
-  button {
-    padding: 10px 20px;
-    font-size: 1rem;
-    background-color: #b85400;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 15px;
-  }
-  button:disabled {
-    background-color: #ccc;
-    cursor: not-allowed;
-  }
-  #messages {
-    margin-top: 20px;
-    font-size: 1.2rem;
-    min-height: 40px;
-  }
-`;
-document.head.appendChild(style);
-
-// Declarações iniciais com var, let, const
-var nomeCantina = "Cantina do Antonio";
-let salgados = 30;
-const precoSalgado = 6;
-
-// Criando elementos dinamicamente
-
-const titulo = document.createElement('h1');
-titulo.textContent = nomeCantina;
-document.body.appendChild(titulo);
-
-const estoqueP = document.createElement('p');
-estoqueP.textContent = `Temos ${salgados} salgados disponíveis.`;
-document.body.appendChild(estoqueP);
-
-const precoP = document.createElement('p');
-precoP.textContent = `Cada salgado custa R$${precoSalgado.toFixed(2)}.`;
-document.body.appendChild(precoP);
-
-const btnVender = document.createElement('button');
-btnVender.textContent = 'Vender 1 salgado';
-document.body.appendChild(btnVender);
-
-const messagesDiv = document.createElement('div');
-messagesDiv.id = 'messages';
-document.body.appendChild(messagesDiv);
-
-let totalVendido = 0;
-
-function atualizarEstoque() {
-  estoqueP.textContent = `Temos ${salgados} salgados disponíveis.`;
-  if (salgados <= 0) {
-    btnVender.disabled = true;
-    messagesDiv.textContent = 'Estoque esgotado! Não é possível vender mais salgados.';
-  } else {
-    messagesDiv.textContent = '';
-    btnVender.disabled = false;
-  }
+// Função para adicionar texto ao "console" na página
+function logToConsole(message) {
+    const consoleOutput = document.getElementById('console-output');
+    consoleOutput.textContent += message + '\n';
+    console.log(message); // Mantém o log no console do navegador
 }
 
-btnVender.addEventListener('click', () => {
-  if (salgados > 0) {
-    salgados--;
-    totalVendido += precoSalgado;
-    atualizarEstoque();
-    messagesDiv.textContent = `Vendido 1 salgado! Total vendido: R$${totalVendido.toFixed(2)}.`;
-  }
+// =================================================================
+// Passo 1: Declarando variáveis
+// =================================================================
+
+// 'var' para o nome da cantina (escopo de função)
+var nomeCantina = "Cantina da Escola";
+logToConsole("Bem-vindo à " + nomeCantina);
+
+// 'let' para a quantidade de salgados (o valor pode mudar)
+let salgados = 20;
+logToConsole("Temos " + salgados + " salgados disponíveis.");
+
+// 'const' para o preço fixo de cada salgado (o valor não muda)
+const precoSalgado = 5;
+logToConsole("Cada salgado custa R$" + precoSalgado);
+
+// Atualiza o HTML com os valores iniciais
+document.getElementById('nome-cantina').textContent = nomeCantina;
+document.getElementById('salgados-disponiveis').textContent = salgados;
+document.getElementById('preco-salgado').textContent = "R$" + precoSalgado.toFixed(2);
+
+// =================================================================
+// Passo 2: Atualizando valores
+// =================================================================
+
+const venderBtn = document.getElementById('vender-btn');
+venderBtn.addEventListener('click', () => {
+    logToConsole("\n--- Realizando uma venda ---");
+    
+    // Atualiza o número de salgados (usando 'let')
+    const quantidadeVendida = 5;
+    if (salgados >= quantidadeVendida) {
+        salgados = salgados - quantidadeVendida;
+        logToConsole("Foram vendidos " + quantidadeVendida + " salgados.");
+
+        // Calcula quanto a cantina ganhou (usando 'let' para uma nova variável)
+        let totalVendido = quantidadeVendida * precoSalgado;
+        logToConsole("A cantina vendeu R$" + totalVendido + " nesta transação.");
+
+        // Atualiza o HTML com os novos valores
+        document.getElementById('salgados-restantes').textContent = salgados;
+        document.getElementById('total-arrecadado').textContent = "R$" + totalVendido.toFixed(2);
+
+        logToConsole("Agora restam " + salgados + " salgados.");
+    } else {
+        logToConsole("Não há salgados suficientes para a venda!");
+        document.getElementById('salgados-restantes').textContent = "Sem estoque";
+        document.getElementById('total-arrecadado').textContent = "R$0.00";
+    }
 });
 
-atualizarEstoque();
+// =================================================================
+// Passo 3: Teste rápido - Demonstração dos escopos
+// =================================================================
+
+logToConsole("\n--- Testando 'const' e escopo de blocos ---");
+
+try {
+    // Tentar mudar o valor de 'precoSalgado'
+    // precoSalgado = 6;
+    logToConsole("Tentando mudar o preço do salgado...");
+    logToConsole("  -> A linha 'precoSalgado = 6;' geraria um erro de 'Assignment to constant variable'.");
+} catch (e) {
+    logToConsole("Erro: " + e.message);
+}
+
+// Demonstração de escopo de bloco
+if (true) {
+    var testeVar = "Sou var";
+    let testeLet = "Sou let";
+    logToConsole("Dentro do bloco:");
+    logToConsole("  -> " + testeVar); // Funciona
+    logToConsole("  -> " + testeLet); // Funciona
+}
+
+logToConsole("Fora do bloco:");
+logToConsole("  -> " + testeVar); // Funciona (var tem escopo de função, não de bloco)
+try {
+    logToConsole("  -> Tentando acessar 'testeLet'...");
+    logToConsole(testeLet); // Isso causaria um erro
+} catch (e) {
+    logToConsole("  -> " + "Erro: " + e.message); // 'testeLet' não é acessível fora do bloco
+}

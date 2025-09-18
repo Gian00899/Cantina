@@ -1,11 +1,32 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <title>Cantina Dinâmica - só JS</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cantina da Escola</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <script src="script.js"></script>
+    <div class="container">
+        <h1>Cantina da Escola</h1>
+        <div id="status-cantina">
+            <p><strong>Nome da Cantina:</strong> <span id="nome-cantina"></span></p>
+            <p><strong>Salgados Disponíveis:</strong> <span id="salgados-disponiveis"></span></p>
+            <p><strong>Preço por Salgado:</strong> <span id="preco-salgado"></span></p>
+        </div>
+        <div class="botoes">
+            <button id="vender-btn">Vender 5 Salgados</button>
+        </div>
+        <div id="resultado-venda">
+            <p><strong>Salgados Restantes:</strong> <span id="salgados-restantes"></span></p>
+            <p><strong>Total Arrecadado (na venda):</strong> <span id="total-arrecadado"></span></p>
+        </div>
+        <div class="terminal">
+            <h2>Console (Saídas do JavaScript)</h2>
+            <pre id="console-output"></pre>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
-

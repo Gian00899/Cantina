@@ -1,2 +1,39 @@
+<!DOCTYPE html><html lang="pt-br">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Teste Cantina</title>
+</head>
+<body>
+    <h1>Bem-vindo à Cantina da Escola</h1>
+    <p id="resultado"></p>
 
+    <script>
+        var nomeCantina = "Cantina da Escola";
+        console.log("Bem-vindo à " + nomeCantina);
+
+        let salgados = 20;
+        console.log("Temos " + salgados + " salgados disponíveis.");
+
+        const precoSalgado = 5;
+        console.log("Cada salgado custa R$" + precoSalgado);
+
+        salgados = salgados - 5;
+        let totalVendido = 5 * precoSalgado;
+
+        console.log("Agora restam " + salgados + " salgados.");
+        console.log("A cantina vendeu R$" + totalVendido);
+
+        if (true) {
+            var testeVar = "Sou var";
+            let testeLet = "Sou let";
+            console.log(testeVar); // funciona
+            console.log(testeLet); // funciona
+        }
+
+        console.log(testeVar); // funciona
+        // console.log(testeLet); // causaria erro, descomente para testar
+    </script>
+</body>
+</html>
 
